@@ -62,10 +62,14 @@ isValid &= validation.checkHourWork(gioLam, "Giờ làm trong khoảng 80-200h",
     //Hiển thị lên table
     hienThiLenTable(dsnv.mangNV);
     setLocalStorage();
+    hienThiLenTable(dsnv.mangNV);
+    document.querySelector("#btnDong").click();
   }
 
 
 }
+
+
 
 function hienThiLenTable(mang) {
   //nv: tung doi tuong nv
@@ -82,7 +86,7 @@ function hienThiLenTable(mang) {
         <td>${nv.xepLoai}</td>
         <td class="d-flex">
             <button class="btn btn-danger mr-2" onclick="xoaNhanVien('${nv.taiKhoan}')"><i class="fa-solid fa-trash"></i></button>
-            <button class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="xemNhanVien('${nv.taiKhoan}')"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn btn-success" id="btnView" data-toggle="modal" data-target="#myModal" onclick="xemNhanVien('${nv.taiKhoan}')"><i class="fa-solid fa-eye"></i></button>
         </td>
         </tr>`;
   });
@@ -121,6 +125,25 @@ function capNhatNhanVien() {
   var chucVu = getELE("chucvu").value;
   var gioLam = getELE("gioLam").value;
 
+  taiKhoan = taiKhoan.replace(/\s/g, "");
+
+  var isValid = true;
+
+
+  isValid &= validation.checkEmpty(hoTen, "Tên sinh viên không được để trống", "tbTen") &&
+  validation.checkName(hoTen, "Tên sinh viên không đúng định dạng","tbTen");
+
+
+isValid &= validation.checkEmail(email, "Email không đúng định dạng", "tbEmail")
+isValid &= validation.checkPass(matKhau, "Mật khẩu phải có ít nhất 1 chữ thường- 1 chữ hoa- số- kí tự đặc biệt", "tbMatKhau")
+isValid &= validation.checkDate(ngayLam, "Ngày làm không đúng định dạng","tbNgay")
+isValid &= validation.checkSalary(luongCB, "Lương cơ bản không đúng định dạng","tbLuongCB")
+isValid &= validation.checkDropDown("chucvu", "Vui lòng chọn chức vụ", "tbChucVu")
+isValid &= validation.checkHourWork(gioLam, "Giờ làm trong khoảng 80-200h", "tbGioLam")
+
+
+
+if (isValid) {
   var nvCapNhat = new NhanVien(
     taiKhoan,
     hoTen,
@@ -138,6 +161,9 @@ function capNhatNhanVien() {
   dsnv.capnhatNV(nvCapNhat);
   setLocalStorage();
   getLocalStorage();
+  hienThiLenTable(dsnv.mangNV);
+  document.querySelector("#btnDong").click();
+}
 }
 
 function resetForm() {
@@ -171,7 +197,7 @@ function timKiemXepLoai() {
   var rankSearch =  dsnv.mangNV.filter((nv) => {
     return nv.xepLoai
       .toUpperCase()
-      .includes(inputSearch.toUpperCase().replace(/\s/g, ""));
+      .includes(inputSearch.toUpperCase())
   })
   return hienThiLenTable(rankSearch);
 

@@ -32,13 +32,13 @@ function NhanVien(taiKhoan,hoTen,email, matKhau, ngayLam,luongCB,chucVu, gioLam,
     this.xepLoai = function(){
 
         if (this.gioLam >= 192) {
-            this.xepLoai = "xuất sắc"
+            this.xepLoai = "xuat sac"
         }else if (this.gioLam >= 176){
-            this.xepLoai = "giỏi"
+            this.xepLoai = "gioi"
         }else if (this.gioLam >= 160){
-            this.xepLoai = "khá"
+            this.xepLoai = "kha"
         }else if (this.gioLam < 160){
-            this.xepLoai = "trung bình"
+            this.xepLoai = "trung binh"
         }
         // else{
         //     alert("Giờ làm không hợp lệ")

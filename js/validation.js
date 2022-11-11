@@ -1,9 +1,11 @@
 function Validation() {
   this.checkEmpty = function (valInput, msgErr, spanID) {
     if (valInput.trim() == "") {
+    document.getElementById(spanID).style.display = "block";
       document.getElementById(spanID).innerHTML = msgErr;
       return false;
-    }
+    } 
+    document.getElementById(spanID).style.display = "none";
     document.getElementById(spanID).innerHTML = "";
     return true;
   };
@@ -48,9 +50,11 @@ this.checkEmail = function (valInput, msgErr, spanID){
 
     if(valInput.match(pattern)){
         document.getElementById(spanID).innerHTML = "";
+        document.getElementById(spanID).style.display = "none";
         return true;
     }
     document.getElementById(spanID).innerHTML = msgErr;
+    document.getElementById(spanID).style.display = "block";
         return false;
 }
 
@@ -59,9 +63,11 @@ this.checkPass = function (valInput, msgErr, spanID){
 
     if(valInput.match(pattern)){
         document.getElementById(spanID).innerHTML = "";
+        document.getElementById(spanID).style.display = "none";
         return true;
     }
     document.getElementById(spanID).innerHTML = msgErr;
+    document.getElementById(spanID).style.display = "block";
         return false;
 }
 
@@ -70,9 +76,11 @@ this.checkDate = function (valInput, msgErr,spanID){
 
     if(valInput.match(pattern)){
         document.getElementById(spanID).innerHTML = "";
+        document.getElementById(spanID).style.display = "none";
         return true;
     }
     document.getElementById(spanID).innerHTML = msgErr;
+    document.getElementById(spanID).style.display = "block";
         return false;
 }
 
@@ -81,9 +89,11 @@ this.checkSalary = function (valInput, msgErr, spanID){
 
     if (valInput >=1000000 && valInput <= 20000000 && valInput.match(pattern)){
       document.getElementById(spanID).innerHTML = "";
+      document.getElementById(spanID).style.display = "none";
       return true;
     }
         document.getElementById(spanID).innerHTML = msgErr;
+        document.getElementById(spanID).style.display = "block";
         return false;
 }
 
@@ -91,9 +101,11 @@ this.checkDropDown = function (seclectID, msgErr, spanID){
   var index = document.getElementById(seclectID).selectedIndex;
   if (index == 0){
     document.getElementById(spanID).innerHTML = msgErr;
+    document.getElementById(spanID).style.display = "block";
         return false;
   }
     document.getElementById(spanID).innerHTML = "";
+    document.getElementById(spanID).style.display = "none";
       return true;
 }
 
@@ -102,9 +114,11 @@ this.checkHourWork = function (valInput, msgErr, spanID){
   
   if(valInput >= 80 && valInput <= 200 && valInput.match(pattern)){
     document.getElementById(spanID).innerHTML = "";
+    document.getElementById(spanID).style.display = "none";
       return true;
     }
         document.getElementById(spanID).innerHTML = msgErr;
+        document.getElementById(spanID).style.display = "block";
         return false;
 }
 

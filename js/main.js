@@ -30,13 +30,14 @@ function themNhanVien() {
   var chucVu = getELE("chucvu").value;
   var gioLam = getELE("gioLam").value;
 
+  taiKhoan = taiKhoan.replace(/\s/g, "");
   // console.log(taiKhoan,hoTen,email, matKhau, ngayLam,luongCB, chucVu, gioLam)
 
   var isValid = true;
 
   isValid &= validation.checkEmpty(taiKhoan,"Tài khoản không được để trống", "tbTKNV") &&
   validation.checkIDTK(taiKhoan,"Tài khoản không được trùng", "tbTKNV", dsnv.mangNV) &&
-  validation.checkID(taiKhoan,"Tài khoản không đúng định dạng","tbTKNV")
+  validation.checkID(taiKhoan,"Tài khoản không đúng định dạng","tbTKNV");
 
   isValid &= validation.checkEmpty(hoTen, "Tên sinh viên không được để trống", "tbTen") &&
   validation.checkName(hoTen, "Tên sinh viên không đúng định dạng","tbTen");
@@ -57,12 +58,12 @@ isValid &= validation.checkHourWork(gioLam, "Giờ làm trong khoảng 80-200h",
 
     //Thêm vào mảng nv
     dsnv.themNV(nv);
-    // console.log(dsnv.mangNV);
+    console.log(dsnv.mangNV);
 
     //Hiển thị lên table
     hienThiLenTable(dsnv.mangNV);
     setLocalStorage();
-    hienThiLenTable(dsnv.mangNV);
+    // hienThiLenTable(dsnv.mangNV);
     document.querySelector("#btnDong").click();
   }
 
@@ -129,7 +130,6 @@ function capNhatNhanVien() {
 
   var isValid = true;
 
-
   isValid &= validation.checkEmpty(hoTen, "Tên sinh viên không được để trống", "tbTen") &&
   validation.checkName(hoTen, "Tên sinh viên không đúng định dạng","tbTen");
 
@@ -162,7 +162,7 @@ if (isValid) {
   setLocalStorage();
   getLocalStorage();
   hienThiLenTable(dsnv.mangNV);
-  document.querySelector("#btnDong").click();
+  document.querySelector("#btnDong").click();git aA
 }
 }
 
@@ -197,7 +197,7 @@ function timKiemXepLoai() {
   var rankSearch =  dsnv.mangNV.filter((nv) => {
     return nv.xepLoai
       .toUpperCase()
-      .includes(inputSearch.toUpperCase())
+      .includes(inputSearch.toUpperCase());
   })
   return hienThiLenTable(rankSearch);
 

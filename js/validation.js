@@ -39,9 +39,12 @@ this.checkName = function (valInput, msgErr,spanID){
 
     if(valInput.match(pattern)){
         document.getElementById(spanID).innerHTML = "";
+        document.getElementById(spanID).style.display = "none";
         return true;
     }
+    document.getElementById(spanID).style.display = "block";
     document.getElementById(spanID).innerHTML = msgErr;
+
         return false;
 }
 
@@ -110,7 +113,7 @@ this.checkDropDown = function (seclectID, msgErr, spanID){
 }
 
 this.checkHourWork = function (valInput, msgErr, spanID){
-  var pattern = /^(\d{2,3}(\.\d{1,2})?)$/
+  var pattern = /^(\d{2,3}(\.\d{1,2})?)$/;
   
   if(valInput >= 80 && valInput <= 200 && valInput.match(pattern)){
     document.getElementById(spanID).innerHTML = "";

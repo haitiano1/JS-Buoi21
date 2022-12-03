@@ -4,6 +4,7 @@ function DanhSachNhanVien(){
     //phương thức
     this.themNV = function(nv){
         //thêm phần tử nv vào mảng
+        console.log(111);
     this.mangNV.push(nv);
     }
     this.timViTri = function(userNV){
